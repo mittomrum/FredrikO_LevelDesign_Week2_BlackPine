@@ -1,6 +1,6 @@
 name: Build And Deploy 🙏
 
-on: push
+on: workflow_dispatch
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -69,6 +69,9 @@ jobs:
           name: build-WebGL
           path: build/WebGL
 
+  name: Install Butler
+    uses: itchio/setup-butler@v1.2.2
+
   deployPages:
     needs: buildWebGL
     name: Deploy to Itch.io 🚀
@@ -87,17 +90,22 @@ jobs:
         run: ls -R
         working-directory: build/WebGL
 
+      - name: Install Butler
+        uses: itchio/setup-butler@v1.2.2
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: itch-io
           folder: build/WebGL
 
-      - uses: manleydev/butler-publish-itchio-action@master
+      - name: Publish WebGL build to itch.io 🚀
+        uses: manleydev/butler-publish-itchio-action@master
         env:
-          BUTLER_CREDENTIALS: ${{ secrets.ITCH_IO_API_KEY }}
+          BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_API_KEY }}
           CHANNEL: HTML
           ITCH_GAME: week2
           ITCH_USER: mittomrum
           BRANCH: itch-io
           PACKAGE: build/WebGL
+        if: steps.build-cache.outputs.cache-hit == 'true'
