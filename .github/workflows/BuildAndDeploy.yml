@@ -61,6 +61,8 @@ jobs:
       - uses: webbertakken/unity-builder@v2.2.0
         with:
           targetPlatform: WebGL
+        env:
+          CACHE: "pull-push"
 
       - uses: actions/cache@v2
         id: build-cache
