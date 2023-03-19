@@ -69,9 +69,6 @@ jobs:
           name: build-WebGL
           path: build/WebGL
 
-  name: Install Butler
-    uses: itchio/setup-butler@v1.2.2
-
   deployPages:
     needs: buildWebGL
     name: Deploy to Itch.io 🚀
