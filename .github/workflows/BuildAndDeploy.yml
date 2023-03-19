@@ -62,7 +62,7 @@ jobs:
         with:
           targetPlatform: WebGL
         env:
-          CACHE: "pull-push"
+          CACHE: "save"
 
       - uses: actions/cache@v2
         id: build-cache
