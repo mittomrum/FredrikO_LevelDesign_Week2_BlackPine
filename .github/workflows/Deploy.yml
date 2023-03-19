@@ -1,4 +1,4 @@
-name: Build And Deploy 🙏
+name: Dev Deploy 🙏
 
 on:
   workflow_dispatch:
@@ -8,14 +8,11 @@ on:
       - main
 
 env:
-  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
   ITCH_USERNAME: ${{ secrets.ITCH_USERNAME }}
   ITCH_GAME_ID: ${{ secrets.ITCH_GAME_ID }}
 
 jobs:
-
   Upload_dev_beta:
-    needs: buildWebGL
     name: Upload dev_beta to Itch
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/dev'
