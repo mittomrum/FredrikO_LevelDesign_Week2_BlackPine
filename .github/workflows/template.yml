@@ -1,4 +1,4 @@
-name: GameCI Template 🎮
+name: Build And Deploy 🙏
 
 on: push
 
@@ -7,7 +7,7 @@ env:
 
 jobs:         
  checkLicense:
-    name: Check for the Unity license
+    name: Check for the Unity license 📧
     runs-on: ubuntu-latest
     env:
       UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
