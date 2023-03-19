@@ -2,10 +2,7 @@ name: Build And Deploy 🙏
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - dev
-      - main
+
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
