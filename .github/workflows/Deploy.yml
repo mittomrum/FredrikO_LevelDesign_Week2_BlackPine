@@ -40,7 +40,7 @@ jobs:
           buildChannel: ${{ matrix.channel }}
           buildNumber: ${{ needs.version.outputs.version_hash }}
 
-  Upload_production:
+Upload_production:
     needs: buildWebGL
     name: Upload production to Itch
     runs-on: ubuntu-latest
